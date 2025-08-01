@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Dancing+Script:wght@400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&family=Quicksand:wght@300..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins&display=swap');
 @import "tailwindcss";
 
 
 :root {
   --font-quicksand: "Quicksand", sans-serif;
   --font-dancingscript: "Dancing Script", cursive;
+  --font-poppins: "Poppins", sans-serif;
   --font-lora: "Lora", serif;
   --font-merriweather: "Merriweather", serif;
   --font-cormorant-garamound: "Cormorant Garamond", serif;
@@ -23,6 +24,10 @@ body {
   font-family: var(--font-dancingscript);
 }
 
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
 .font-lora {
   font-family: var(--font-lora);
 }
@@ -34,3 +39,25 @@ body {
 .font-cormorant {
   font-family: var(--font-cormorant-garamound);
 }
+
+ @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #5f8d4e; }
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            border-right: 3px solid #5f8d4e;
+            white-space: nowrap;
+            width: 0;
+            animation: 
+                typing 3s steps(20, end) forwards,
+                blink-caret 0.75s step-end infinite;
+            animation-delay: 0.5s;
+        }

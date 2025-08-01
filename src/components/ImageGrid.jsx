@@ -19,14 +19,15 @@ export default function HeroAndGallery() {
           <div className={`w-full h-full bg-[${noise}] opacity-20 mix-blend-multiply`}></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-[1300px] mx-auto relative z-10">
           {/* Text content */}
           <div data-aos="fade-right">
+            <div className="flex flex-row m-0 p-0 h-16">
             <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
-              From Clay to Cosmos,
-              <br />
-              Discover Divine Elegance
-            </h1>
+              From <div className="inline-block m-auto align-middle"><span className="typewriter text-[#16610E] mx-2 bg-yellow-400 italic font-poppins font-bold">Clay to Cosmos</span></div></h1></div>
+              <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
+              Discover Divine Elegance</h1>
+            
             <p className="font-lora text-lg text-[#5f8d4e] mb-8 max-w-md">
               Explore handcrafted Ganesh Murti designs that honor tradition and
               eco-consciousness. A blend of devotion, art, and sustainability.
