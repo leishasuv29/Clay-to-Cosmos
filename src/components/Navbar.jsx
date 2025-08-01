@@ -17,10 +17,18 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const audio = new Audio("/bappa-chant.mp3"); // Place this file inside public folder
+    if (showShower) {
+      audio.play();
+    }
+    return () => audio.pause();
+  }, [showShower]);
+
   const handleMenuClick = () => {
     setOpen(!open);
     setShowShower(true);
-    setTimeout(() => setShowShower(false), 3000); // end after 3s
+    setTimeout(() => setShowShower(false), 3000);
   };
 
   return (
@@ -51,18 +59,16 @@ export default function Navbar() {
 
         {/* Dropdown Menu */}
         <div
-          className={`absolute left-0 mt-4 w-[24rem] rounded-3xl shadow-2xl backdrop-blur-xl bg-[#fdf6f0]/90 border-2 border-[#7a4c36] z-50 overflow-hidden transform transition-all duration-500 ease-in-out origin-top ${
+          className={`absolute left-0 mt-4 w-[24rem] rounded-3xl shadow-2xl backdrop-blur-xl bg-[#fdf6f0]/90 border-[3px] border-yellow-500 z-50 overflow-hidden transform transition-all duration-500 ease-in-out origin-top ${
             open
               ? "opacity-100 scale-100 translate-y-0"
               : "opacity-0 scale-95 -translate-y-5 pointer-events-none"
-          }`}
+          } animate-glow-border`}
         >
-          {/* Header */}
           <div className="text-center text-xl font-semibold text-[#5f3e2b] py-4 bg-[#f3e3d3] tracking-wider border-b border-[#e8d9cc] animate-fade-in">
             |ॐ| गणपति बाप्पा मोरया |ॐ|
           </div>
 
-          {/* Image */}
           <div className="px-6 py-4">
             <div className="rounded-3xl overflow-hidden shadow-md border border-[#e0cdbb] transition-transform duration-300 hover:scale-[1.02]">
               <img
@@ -73,7 +79,6 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Navigation Links */}
           <nav className="px-6 pb-6 space-y-4">
             {[
               ["Home", "#"],
@@ -92,19 +97,18 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Footer */}
           <div className="text-center text-sm text-[#6b4b39] py-4 italic border-t border-[#e8d9cc] bg-[#fdf6f0] tracking-wide">
-            <span className="block opacity-90 animate-pulse">
-              || Made with blessings ||
-            </span>
+            <span className="block opacity-90 animate-pulse">|| Made with blessings ||</span>
             <span className="text-lg mt-1 inline-block animate-bounce">🪔</span>
           </div>
         </div>
       </div>
 
       {/* Right side – Logo/Title */}
-      <div className="text-[#3d5234] font-bold text-xl sm:text-3xl mr-2 tracking-wide transition-all duration-300 text-right">
-        || Clay to Cosmos ||
+      <div className="text-[#3d5234] font-bold text-xl sm:text-3xl mr-2 tracking-wide transition-all duration-300 text-right flex items-center gap-2">
+        <span className="text-xl animate-bounce">🌸</span>
+        <span>|| Clay to Cosmos ||</span>
+        <span className="text-xl animate-bounce">🌸</span>
       </div>
 
       {/* Shower Effect */}
