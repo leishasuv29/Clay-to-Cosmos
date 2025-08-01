@@ -20,7 +20,6 @@ function App() {
       {!isLoading && (
         <div className="min-h-screen">
           <HeroAndGallery />
-          Main Content
         </div>
       )}
     </>
