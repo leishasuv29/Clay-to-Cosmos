@@ -19,27 +19,26 @@
   }
 }
 
-.custom-ripple {
+.soft-ripple {
   position: fixed;
-  width: 25px;
-  height: 25px;
+  width: 60px;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.2); /* soft white glow */
   border-radius: 50%;
   pointer-events: none;
-  transform: translate(-50%, -50%) scale(1);
-  background: radial-gradient(circle, rgba(255, 223, 186, 0.6) 0%, rgba(255, 105, 180, 0.3) 70%, transparent 100%);
-  box-shadow: 0 0 15px 5px rgba(255, 182, 193, 0.3);
-  animation: divineRipple 1.2s ease-out;
-  z-index: 9999;
-  filter: blur(1px);
+  transform: translate(-50%, -50%);
+  animation: ripple-fade 1.2s ease-out;
+  backdrop-filter: blur(4px); /* subtle glow */
+  z-index: 50;
 }
 
-@keyframes divineRipple {
+@keyframes ripple-fade {
   0% {
-    transform: translate(-50%, -50%) scale(0.3);
-    opacity: 1;
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(0.5);
   }
   100% {
-    transform: translate(-50%, -50%) scale(4.5);
     opacity: 0;
+    transform: translate(-50%, -50%) scale(2.5);
   }
 }

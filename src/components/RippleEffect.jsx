@@ -1,40 +1,24 @@
-import { useEffect, useState } from "react";
-import "../index.css"; // make sure it imports ripple CSS
+import { useEffect } from "react";
 
 export default function RippleEffect() {
-  const [ripples, setRipples] = useState([]);
-
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const newRipple = {
-        id: Date.now(),
-        x: e.clientX,
-        y: e.clientY,
-      };
-
-      setRipples((prev) => [...prev, newRipple]);
+      const ripple = document.createElement("div");
+      ripple.className = "soft-ripple";
+      ripple.style.left = `${e.clientX}px`;
+      ripple.style.top = `${e.clientY}px`;
+      document.body.appendChild(ripple);
 
       setTimeout(() => {
-        setRipples((prev) => prev.filter((r) => r.id !== newRipple.id));
-      }, 1200); // match animation duration
+        ripple.remove();
+      }, 1200); // duration to match the animation
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
   }, []);
 
-  return (
-    <>
-      {ripples.map((ripple) => (
-        <span
-          key={ripple.id}
-          className="custom-ripple"
-          style={{
-            top: ripple.y + "px",
-            left: ripple.x + "px",
-          }}
-        ></span>
-      ))}
-    </>
-  );
+  return null;
 }
