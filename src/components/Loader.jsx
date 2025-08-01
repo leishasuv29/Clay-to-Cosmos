@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import GaneshSVG from "../assets/ganesh.png"; // if using file
+import GaneshImg from "../assets/ganesh.png"; // if using file
 
 export default function Loader({ onFinish }) {
   const [progress, setProgress] = useState(0);
@@ -34,12 +34,18 @@ export default function Loader({ onFinish }) {
         fadeOut ? "opacity-0 pointer-events-none" : "opacity-100"
       }`}
     >
-      {/* Ganesha SVG */}
+      {/* Ganesha Image */}
       <img
-        src={GaneshSVG}
+        src={GaneshImg}
         alt="Ganesh Icon"
-        className="w-40 h-40 mb-4 animate-bounce"
+        className="w-40 h-40 m-0 animate-bounce"
       />
+
+      {/* 🎉 Add greeting text here */}
+      <div className="flex flex-col gap-2 align-middle items-center justify-center m-10 px-6 py-2 rounded-full text-lg sm:text-xl font-dancingscript font-bold bg-gradient-to-r from-[#fbb6ce] via-yellow-200 to-[#fce4ec] text-[#7a4c36] shadow-md animate-pulse border-2 border-[#7a4c36]">
+        <p>🌸 || शुभ गणेश चतुर्थी || 🌸</p>
+       <p  className="lg:text-3xl sm:text-2xl">🪔 Happy Ganesh Chaturthi 🪔</p>
+      </div>
 
       {/* Percentage */}
       <div className="text-[#7a4c36] text-xl font- mb-2 font-dancingscript">
