@@ -3,7 +3,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { images } from "../utils/data";
 import ganeshBG from "../assets/ganapati-bg-1.png";
-import noise from '../assets/noise.jpg'
+import noise from "../assets/noise.jpg";
 
 export default function HeroAndGallery() {
   useEffect(() => {
@@ -16,18 +16,23 @@ export default function HeroAndGallery() {
       <section className="min-h-[90vh] w-full bg-[#fce4ec] flex items-center justify-center px-6 sm:px-16 py-12 rounded-3xl shadow-lg overflow-hidden relative z-10">
         {/* Background Noise only for Hero */}
         <div className="absolute inset-0 z-0">
-          <div className={`w-full h-full bg-[${noise}] opacity-20 mix-blend-multiply`}></div>
+          <div
+            className={`w-full h-full bg-[${noise}] opacity-20 mix-blend-multiply`}
+          ></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-[1300px] mx-auto relative z-10">
           {/* Text content */}
           <div data-aos="fade-right">
-            <div className="flex flex-row m-0 p-0 h-16">
-            <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
-              From <div className="inline-block m-auto align-middle"><span className="typewriter text-[#16610E] mx-2 bg-yellow-400 italic font-poppins font-bold">Clay to Cosmos</span></div></h1></div>
-              <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
-              Discover Divine Elegance</h1>
-            
+            <h1 className="font-merriweather text-[clamp(2rem,4vw,3.2rem)] font-extrabold text-[#7a4c36] leading-tight mb-6 text-balance">
+              From{" "}
+              <span className="inline-block bg-yellow-400 italic font-poppins font-bold text-[#16610E] px-2">
+                Clay to Cosmos
+              </span>
+              <br />
+              Discover Divine Elegance
+            </h1>
+
             <p className="font-lora text-lg text-[#5f8d4e] mb-8 max-w-md">
               Explore handcrafted Ganesh Murti designs that honor tradition and
               eco-consciousness. A blend of devotion, art, and sustainability.
