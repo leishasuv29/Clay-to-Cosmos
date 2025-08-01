@@ -103,8 +103,8 @@ export default function Navbar() {
       </div>
 
       {/* Right side – Logo/Title */}
-      <div className="text-[#3d5234] font-bold text-4xl sm:text-4xl mr-2 tracking-wide transition-all duration-300 text-right">
-        || Clay to Comos ||
+      <div className="text-[#3d5234] font-bold text-xl sm:text-3xl mr-2 tracking-wide transition-all duration-300 text-right">
+        || Clay to Cosmos ||
       </div>
 
       {/* Shower Effect */}

@@ -22,4 +22,37 @@ const images = [
   "https://i.pinimg.com/736x/c1/d5/3c/c1d53c87419464f135d70bd719ad7695.jpg",
 ];
 
-export { images };
+ const stories = [
+    {
+      title: "How Mushak Became Lord Ganesha's Vahana",
+      content:
+        "Once a mischievous demon named Gajamukha was cursed and turned into a tiny mouse. This little mouse was wild and uncontrollable! One day, he stumbled into Ganesha’s path and tried to wreak havoc. But Ganesha calmly trapped him under his massive foot. The mouse begged for mercy—and so, Ganesha made him his divine ride. That’s how the mighty Lord rides a humble mouse!",
+      icon: "https://img.icons8.com/deco/48/mouse--v2.png",
+    },
+    {
+      title: "The Modak Mystery – Why Ganesha Loves Modaks",
+      content:
+        "One day, Goddess Parvati made a batch of sweet modaks. Ganesha loved them so much that he declared, “Whoever offers me modaks with devotion shall be blessed with wisdom and prosperity.” Since then, modaks became his sweet of choice—and a must-have for every Ganesh Chaturthi!",
+      icon: "https://img.icons8.com/?size=100&id=lbHw3dWD9ssc&format=png&color=000000",
+    },
+    {
+      title: "The Broken Tusk – Ganesha the Scribe",
+      content:
+        "When Sage Vyasa wanted to write the Mahabharata, he needed someone who could write nonstop. Ganesha agreed—but only if Vyasa recited without pause. When his pen broke mid-writing, Ganesha broke off his own tusk and continued writing. That’s why you often see him with one tusk—he literally gave a piece of himself for wisdom!",
+      icon: "https://img.icons8.com/?size=100&id=101717&format=png&color=000000",
+    },
+    {
+      title: "The Moon’s Curse – Why We Don’t Look at the Moon",
+      content:
+        "Once, Ganesha tripped and fell from his mouse. The moon saw and laughed. Enraged, Ganesha cursed the moon: “On Chaturthi, whoever looks at you will face false accusations!” That’s why it’s said we should avoid looking at the moon on Ganesh Chaturthi night. So... no peeking!",
+      icon: "https://img.icons8.com/?size=100&id=54382&format=png&color=000000",
+    },
+    {
+      title: "Ganesha’s Birth – Guarding the Door",
+      content:
+        "Parvati created Ganesha from turmeric paste and asked him to guard the door while she bathed. When Shiva tried to enter, Ganesha (unaware he was Shiva!) stopped him. A battle broke out, and Shiva beheaded him in rage. To calm Parvati, Shiva replaced his head—with that of a wise young elephant. Thus, Ganesha was reborn as the elephant-headed god of beginnings!",
+      icon: "https://img.icons8.com/?size=100&id=12061&format=png&color=000000",
+    },
+  ];
+
+export { images, stories };
