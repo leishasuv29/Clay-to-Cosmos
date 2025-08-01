@@ -1,92 +1,100 @@
-import { useState } from "react";
-import { Menu, X } from "lucide-react";
-import titleImage from "../assets/title.png";
+import React, { useState, useRef, useEffect } from "react";
+import bappaImage from "../assets/bappa.jpg";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
-  const links = [
-    { label: "Home", href: "#home" },
-    { label: "About Us", href: "#about" },
-    { label: "Artisans", href: "#artisans" },
-    { label: "Blessed by Ganpati", href: "#blessed" },
-    { label: "Gallery", href: "#gallery" },
-    { label: "Contact", href: "#contact" },
-  ];
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
-    <nav className="bg-[#fce4ec] shadow-md sticky top-0 z-50 w-full">
-      <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-
-        {/* Desktop Nav Left & Right Links */}
-        <div className="hidden md:flex flex-1 justify-between items-center">
-          {/* Left Links */}
-          <ul className="flex space-x-8 text-[#5f8d4e] font-semibold tracking-wide text-[16px]">
-            {links.slice(0, 3).map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="transition duration-300 hover:text-[#7a4c36] hover:underline underline-offset-4"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          {/* Right Links */}
-          <ul className="flex space-x-8 text-[#5f8d4e] font-semibold tracking-wide text-[16px]">
-            {links.slice(3).map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="transition duration-300 hover:text-[#7a4c36] hover:underline underline-offset-4"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Center Logo (Desktop Only) */}
-        <div className="hidden md:block absolute left-1/2 -translate-x-1/2">
-          <img
-            src={titleImage}
-            alt="Clay to Cosmos"
-            className="h-1/9 w-1/9 object-cover rounded-xl border-2 border-[#7a4c36] shadow-sm"
-          />
-        </div>
-
-        {/* Mobile Logo + Menu Toggle */}
-        <div className="md:hidden flex justify-between w-full items-center">
-          <img
-            src={titleImage}
-            alt="Clay to Cosmos"
-            className="h-1/9 w-1/9 object-cover rounded-xl border-2 border-[#7a4c36] shadow-sm"
-          />
-          <button onClick={() => setOpen(!open)} className="text-[#7a4c36] p-2">
-            {open ? <X size={26} /> : <Menu size={26} />}
-          </button>
-        </div>
+    <div className="bg-white p-4 sm:p-6 flex justify-between items-center font-serif shadow-md">
+      <div className="text-[#3d5234] font-bold text-2xl sm:text-3xl ml-2 tracking-wide transition-all duration-300">
+        Clay to Cosmos
       </div>
 
-      {/* Mobile Dropdown Menu */}
-      {open && (
-        <div className="md:hidden bg-[#fce4ec] px-6 py-4 rounded-b-lg shadow-inner">
-          <ul className="flex flex-col items-center space-y-3 text-[#5f8d4e] font-medium text-[15px]">
-            {links.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="hover:text-[#7a4c36] transition duration-300"
-                >
-                  {link.label}
-                </a>
-              </li>
+      <div className="relative inline-block text-left" ref={dropdownRef}>
+        <button
+          onClick={() => setOpen(!open)}
+          className={`bg-[#3d5234] text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-medium shadow hover:bg-[#2c3f27] active:scale-95 transition-transform duration-300 ease-in-out transform ${
+            open ? "rotate-3" : "rotate-0"
+          }`}
+        >
+          <span
+            className={`block transition-opacity duration-200 ${
+              open ? "opacity-0 absolute" : "opacity-100"
+            }`}
+          >
+            Menu ☰
+          </span>
+          <span
+            className={`block transition-opacity duration-200 ${
+              open ? "opacity-100" : "opacity-0 absolute"
+            }`}
+          >
+            Close ✕
+          </span>
+        </button>
+
+        <div
+          className={`absolute right-0 mt-4 w-80 rounded-3xl shadow-2xl backdrop-blur-xl bg-[#fdf6f0]/90 border-2 border-[#7a4c36] z-50 overflow-hidden transform transition-all duration-500 ease-in-out origin-top ${
+            open
+              ? "opacity-100 scale-100 translate-y-0"
+              : "opacity-0 scale-95 -translate-y-5 pointer-events-none"
+          }`}
+        >
+          {/* Header */}
+          <div className="text-center text-xl font-semibold text-[#5f3e2b] py-4 bg-[#f3e3d3] tracking-wider border-b border-[#e8d9cc] animate-fade-in">
+            ॐ गणपति बाप्पा मोरया ॐ
+          </div>
+
+          {/* Curved Image */}
+          <div className="px-6 py-4">
+            <div className="rounded-3xl overflow-hidden shadow-md border border-[#e0cdbb] transition-transform duration-300 hover:scale-[1.02]">
+              <img
+                src={bappaImage}
+                alt="Ganpati Bappa"
+                className="w-full h-64 object-cover transition-transform duration-500 ease-in-out"
+              />
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <nav className="px-5 pb-5 space-y-3">
+            {[
+              ["Home", "#"],
+              ["About Us", "#"],
+              ["Artisans – Blessed by Ganpati", "#"],
+              ["Gallery", "#"],
+              ["Contact", "#"],
+            ].map(([label, link], i) => (
+              <a
+                key={i}
+                href={link}
+                className="block px-5 py-2.5 rounded-xl text-white bg-[#3d5234] hover:bg-[#2c3f27] hover:scale-105 transition-all duration-300 ease-in-out text-center font-medium shadow-sm tracking-wide"
+              >
+                {label}
+              </a>
             ))}
-          </ul>
+          </nav>
+
+          {/* Footer */}
+          <div className="text-center text-sm text-[#6b4b39] py-4 italic border-t border-[#e8d9cc] bg-[#fdf6f0] tracking-wide">
+            <span className="block opacity-90 animate-pulse">
+              || Made with blessings ||
+            </span>
+            <span className="text-lg mt-1 inline-block animate-bounce">🪔</span>
+          </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </div>
   );
 }
