@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import "./index.css";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
 import HeroAndGallery from "./components/ImageGrid";
+import RippleEffect from "./components/RippleEffect";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -16,6 +18,7 @@ function App() {
     <Loader onFinish={() => setIsLoading(false)} />
   ) : (
     <>
+      <RippleEffect /> {/* 👈 MUST be outside other content */}
       <Navbar />
       {!isLoading && (
         <div className="min-h-screen">
