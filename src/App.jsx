@@ -21,6 +21,8 @@ function App() {
       {!isLoading && <div className="min-h-screen">Main Content</div>}
     </>
   );
+  );
 }
 
+export default App;
 export default App;
