@@ -6,7 +6,7 @@
 
 ## 🌿 About the Project
 
-With growing awareness around sustainability, **Clay to Cosmos** was created to inspire individuals and communities through thoughtful, aesthetic Ganpati idol designs. Our platform acts as a seasonal visual hub — *think Pinterest, but entirely devoted to Ganesh Chaturthi. Whether you're looking for traditional clay styles or modern eco-friendly concepts, you’ll find a variety of ideas to bring your vision to life.
+With growing awareness around sustainability, **Clay to Cosmos** was created to inspire individuals and communities through thoughtful, aesthetic Ganpati idol designs. Our platform acts as a seasonal visual hub — *think Pinterest, but entirely devoted to Ganesh Chaturthi*. Whether you're looking for traditional clay styles or modern eco-friendly concepts, you’ll find a variety of ideas to bring your vision to life.
 
 ---
 
@@ -18,13 +18,15 @@ CLAY-TO-COSMOS/
 ├── node_modules/
 ├── public/
 ├── src/
-│ ├── assets/
+│ ├── assets/ # All images and visual assets used in the project
 │ ├── components/
-│ │ ├── ImageGrid.jsx
-│ │ ├── Loader.jsx
-│ │ └── Navbar.jsx
+│ │ ├── ImageGrid.jsx # Murti showcase with image grid and story modal
+│ │ ├── Loader.jsx # Intro loading animation
+│ │ ├── Navbar.jsx # Navigation bar with dropdown
+│ │ ├── RippleEffect.jsx # Ripple cursor effect across the app
+│ │ └── ShowerEffect.jsx # Modak and flower shower animation
 │ ├── utils/
-│ │ └── data.js
+│ │ └── data.js # Image and story data
 │ ├── App.css
 │ ├── App.jsx
 │ ├── index.css
@@ -48,26 +50,36 @@ CLAY-TO-COSMOS/
 
 ---
 
-## 💡 Features
+## ✨ Features Implemented
 
-- Interactive dropdown navigation with smooth animations  
-- Image grid showcasing Ganpati design inspirations  
-- Mobile-first, responsive design  
-- Clean and fast-loading user experience
+| Element | Feature Name             | Description                                                                   |                    
+
+| 1       | Loader Page              | Custom loader animation at the beginning                                                        | 
+| 2       | Image Hover Effect       | Image changes to another version on hover                                                       | 
+| 3       | Image Grid               | Interactive **Murti Grid** where clicking on a Ganesh image opens a beautiful story modal       | 
+| 4       | Navbar                   | Smooth, responsive navigation with dropdown                                                     | 
+| 8       | Ripple Cursor Effect     | Subtle global ripple follows your mouse cursor                                                  | 
+| 10      | Mystery Element 🎁       | Clicking the **menu icon** triggers a **modak & flower shower**; image click opens Murti story | 
+
+> 🧁 **Element 10 (Mystery Element)** includes two magical touches:  
+> - **Modak & flower shower** appears when the menu is toggled  
+> - **Ganesh Murti click** opens a special **story modal**, creating a deeper spiritual connection 🌟  
 
 ---
 
 ## 📌 Getting Started
 
-1. Clone the repository:
+1. **Clone the repository:**
+   ```bash
    git clone https://github.com/leishasuv29/Clay-to-Cosmos.git
    cd Clay-to-Cosmos
 
-2. Install dependencies:
+Install dependencies:
 npm install
 
-3. Start the development server:
+Start the development server:
 npm run dev
 
 🙏 Inspired By
 The artistry, devotion, and evolving design culture surrounding Ganesh Chaturthi.
+Let’s celebrate with meaning, mindfulness, and modaks!
