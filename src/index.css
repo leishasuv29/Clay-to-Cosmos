@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 
-@theme {
+:root {
   --font-quicksand: "Quicksand", sans-serif;
   --font-dancingscript: "Dancing Script", cursive;
   --font-lora: "Lora", serif;
@@ -15,4 +15,24 @@
 
 body {
   font-family: 'Playfair Display', serif;
+}
+
+.font-quicksand {
+  font-family: var(--font-quicksand);
+}
+
+.font-dancingscript {
+  font-family: var(--font-dancingscript);
+}
+
+.font-lora {
+  font-family: var(--font-lora);
+}
+
+.font-merriweather {
+  font-family: var(--font-merriweather);
+}
+
+.font-cormorant {
+  font-family: var(--font-cormorant-garamound);
 }
