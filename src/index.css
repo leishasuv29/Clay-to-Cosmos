@@ -61,3 +61,24 @@ body {
                 blink-caret 0.75s step-end infinite;
             animation-delay: 0.5s;
         }
+
+        .falling-item {
+  position: fixed;
+  top: -80px;
+  z-index: 9999;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  pointer-events: none;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(120vh) rotate(360deg);
+    opacity: 0;
+  }
+}

@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import bappaImage from "../assets/bappa.jpg";
+import ShowerEffect from "./ShowerEffect";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [showShower, setShowShower] = useState(false);
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -15,12 +17,18 @@ export default function Navbar() {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  const handleMenuClick = () => {
+    setOpen(!open);
+    setShowShower(true);
+    setTimeout(() => setShowShower(false), 3000); // end after 3s
+  };
+
   return (
-    <div className="bg-white p-2 sm:p-4 flex justify-between items-center font-serif shadow-md">
+    <div className="bg-white p-2 sm:p-4 flex justify-between items-center font-serif shadow-md relative">
       {/* Left side – Menu */}
       <div className="relative inline-block text-left ml-2" ref={dropdownRef}>
         <button
-          onClick={() => setOpen(!open)}
+          onClick={handleMenuClick}
           className={`bg-[#3d5234] text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-medium shadow hover:bg-[#2c3f27] active:scale-95 transition-transform duration-300 ease-in-out transform ${
             open ? "rotate-3" : "rotate-0"
           }`}
@@ -98,7 +106,9 @@ export default function Navbar() {
       <div className="text-[#3d5234] font-bold text-4xl sm:text-4xl mr-2 tracking-wide transition-all duration-300 text-right">
         || Clay to Comos ||
       </div>
+
+      {/* Shower Effect */}
+      {showShower && <ShowerEffect trigger={showShower} />}
     </div>
   );
 }
-
