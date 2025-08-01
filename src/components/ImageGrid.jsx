@@ -17,7 +17,11 @@ export default function HeroAndGallery() {
         {/* Background Noise only for Hero */}
         <div className="absolute inset-0 z-0">
           <div
-            className={`w-full h-full bg-[${noise}] opacity-20 mix-blend-multiply`}
+            className="w-full h-full opacity-20 mix-blend-multiply"
+            style={{
+              backgroundImage: `url(${noise})`,
+              backgroundSize: "cover",
+            }}
           ></div>
         </div>
 
@@ -59,10 +63,7 @@ export default function HeroAndGallery() {
       </section>
 
       {/* Gallery Section */}
-      <section
-        id="gallery"
-        className="bg-white py-16 px-6 sm:px-10 relative z-10"
-      >
+      <section id="gallery" className="bg-white py-16 px-6 sm:px-10 relative z-10">
         <h2
           className="text-center text-3xl sm:text-5xl font-semibold text-[#5f8d4e] mb-12"
           data-aos="fade-up"
@@ -74,14 +75,14 @@ export default function HeroAndGallery() {
           {images.map((img, i) => (
             <div
               key={i}
-              className="overflow-hidden rounded-2xl shadow-lg hover:scale-105 transform transition duration-500"
+              className="overflow-hidden rounded-2xl shadow-lg bg-white hover:scale-105 transform transition duration-500"
               data-aos="zoom-in-up"
               data-aos-delay={`${i * 100}`}
             >
               <img
                 src={img}
                 alt={`Murti ${i + 1}`}
-                className="w-full h-64 object-cover"
+                className="w-full aspect-square object-contain"
               />
             </div>
           ))}
