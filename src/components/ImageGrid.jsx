@@ -65,7 +65,7 @@ export default function HeroAndGallery() {
       {/* Gallery Section */}
       <section id="gallery" className="bg-white py-16 px-6 sm:px-10 relative z-10">
         <h2
-          className="text-center text-3xl sm:text-5xl font-semibold text-[#5f8d4e] mb-12"
+          className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-12 leading-snug"
           data-aos="fade-up"
         >
           Ganesh Murti Showcase

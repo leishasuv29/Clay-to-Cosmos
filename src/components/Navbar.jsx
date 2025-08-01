@@ -17,11 +17,8 @@ export default function Navbar() {
 
   return (
     <div className="bg-white p-2 sm:p-4 flex justify-between items-center font-serif shadow-md">
-      <div className="text-[#3d5234] font-bold text-2xl sm:text-3xl ml-2 tracking-wide transition-all duration-300">
-        Clay to Cosmos
-      </div>
-
-      <div className="relative inline-block text-left" ref={dropdownRef}>
+      {/* Left side – Menu */}
+      <div className="relative inline-block text-left ml-2" ref={dropdownRef}>
         <button
           onClick={() => setOpen(!open)}
           className={`bg-[#3d5234] text-white px-5 py-2 sm:px-6 sm:py-3 rounded-full text-lg sm:text-xl font-medium shadow hover:bg-[#2c3f27] active:scale-95 transition-transform duration-300 ease-in-out transform ${
@@ -44,8 +41,9 @@ export default function Navbar() {
           </span>
         </button>
 
+        {/* Dropdown Menu */}
         <div
-          className={`absolute right-0 mt-4 w-80 rounded-3xl shadow-2xl backdrop-blur-xl bg-[#fdf6f0]/90 border-2 border-[#7a4c36] z-50 overflow-hidden transform transition-all duration-500 ease-in-out origin-top ${
+          className={`absolute left-0 mt-4 w-[24rem] rounded-3xl shadow-2xl backdrop-blur-xl bg-[#fdf6f0]/90 border-2 border-[#7a4c36] z-50 overflow-hidden transform transition-all duration-500 ease-in-out origin-top ${
             open
               ? "opacity-100 scale-100 translate-y-0"
               : "opacity-0 scale-95 -translate-y-5 pointer-events-none"
@@ -56,7 +54,7 @@ export default function Navbar() {
             |ॐ| गणपति बाप्पा मोरया |ॐ|
           </div>
 
-          {/* Curved Image */}
+          {/* Image */}
           <div className="px-6 py-4">
             <div className="rounded-3xl overflow-hidden shadow-md border border-[#e0cdbb] transition-transform duration-300 hover:scale-[1.02]">
               <img
@@ -67,8 +65,8 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Navigation */}
-          <nav className="px-5 pb-5 space-y-3">
+          {/* Navigation Links */}
+          <nav className="px-6 pb-6 space-y-4">
             {[
               ["Home", "#"],
               ["About Us", "#"],
@@ -79,7 +77,7 @@ export default function Navbar() {
               <a
                 key={i}
                 href={link}
-                className="block px-5 py-2.5 rounded-xl text-white bg-[#3d5234] hover:bg-[#2c3f27] hover:scale-105 transition-all duration-300 ease-in-out text-center font-medium shadow-sm tracking-wide"
+                className="block px-6 py-3 rounded-xl text-white bg-[#3d5234] hover:bg-[#2c3f27] hover:scale-105 transition-all duration-300 ease-in-out text-center font-medium shadow-sm tracking-wide text-lg sm:text-xl"
               >
                 {label}
               </a>
@@ -95,6 +93,12 @@ export default function Navbar() {
           </div>
         </div>
       </div>
+
+      {/* Right side – Logo/Title */}
+      <div className="text-[#3d5234] font-bold text-4xl sm:text-4xl mr-2 tracking-wide transition-all duration-300 text-right">
+        || Clay to Comos ||
+      </div>
     </div>
   );
 }
+
