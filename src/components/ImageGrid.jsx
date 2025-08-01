@@ -37,7 +37,7 @@ export default function HeroAndGallery() {
               Discover Divine Elegance
             </h1>
 
-            <p className="font-lora text-lg text-[#5f8d4e] mb-8 max-w-md">
+            <p className="font-lora text-lg text-[#3d5234] mb-8 max-w-md">
               Explore handcrafted Ganesh Murti designs that honor tradition and
               eco-consciousness. A blend of devotion, art, and sustainability.
             </p>
