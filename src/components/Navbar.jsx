@@ -16,7 +16,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <div className="bg-white p-4 sm:p-6 flex justify-between items-center font-serif shadow-md">
+    <div className="bg-white p-2 sm:p-4 flex justify-between items-center font-serif shadow-md">
       <div className="text-[#3d5234] font-bold text-2xl sm:text-3xl ml-2 tracking-wide transition-all duration-300">
         Clay to Cosmos
       </div>
@@ -29,18 +29,18 @@ export default function Navbar() {
           }`}
         >
           <span
-            className={`block transition-opacity duration-200 ${
+            className={`flex justify-between w-20 cursor-pointer transition-opacity duration-200 ${
               open ? "opacity-0 absolute" : "opacity-100"
             }`}
           >
-            Menu ☰
+            <p>Menu</p> <p>☰</p>
           </span>
           <span
-            className={`block transition-opacity duration-200 ${
+            className={`flex justify-between w-20 transition-opacity duration-200 ${
               open ? "opacity-100" : "opacity-0 absolute"
             }`}
           >
-            Close ✕
+            <p>Close</p> <p>✕</p>
           </span>
         </button>
 
@@ -53,7 +53,7 @@ export default function Navbar() {
         >
           {/* Header */}
           <div className="text-center text-xl font-semibold text-[#5f3e2b] py-4 bg-[#f3e3d3] tracking-wider border-b border-[#e8d9cc] animate-fade-in">
-            ॐ गणपति बाप्पा मोरया ॐ
+            |ॐ| गणपति बाप्पा मोरया |ॐ|
           </div>
 
           {/* Curved Image */}

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { images } from "./utils/data";
 import "./App.css";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";
+import HeroAndGallery from "./components/ImageGrid";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,12 +13,16 @@ function App() {
   }, []);
 
   return isLoading ? (
-    <Loader />
+    <Loader onFinish={() => setIsLoading(false)} />
   ) : (
     <>
       <Navbar />
-      {isLoading && <Loader onFinish={() => setIsLoading(false)} />}
-      {!isLoading && <div className="min-h-screen">Main Content</div>}
+      {!isLoading && (
+        <div className="min-h-screen">
+          <HeroAndGallery />
+          Main Content
+        </div>
+      )}
     </>
   );
 }
