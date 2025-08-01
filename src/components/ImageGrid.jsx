@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { images } from "../utils/data";
-import ganeshBG from "../assets/ganapati-bg.png";
+import ganeshBG from "../assets/ganapati-bg-1.png";
 import noise from '../assets/noise.jpg'
 
 export default function HeroAndGallery() {
