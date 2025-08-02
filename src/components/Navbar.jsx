@@ -27,9 +27,9 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY.current) {
-        setVisible(false); // scroll down = hide
+        setVisible(false); 
       } else {
-        setVisible(true); // scroll up = show
+        setVisible(true); 
       }
       lastScrollY.current = currentScrollY;
     };
@@ -107,7 +107,7 @@ export default function Navbar() {
         }
       `}</style>
 
-      {/* Floating Logo with aura and scroll visibility */}
+      
       <div
         className={`fixed -top-6 left-4 z-50 ${
           visible ? "fade-in" : "fade-out"
@@ -122,7 +122,7 @@ export default function Navbar() {
         </Link>
       </div>
 
-      {/* Menu Button with same scroll visibility */}
+      
       <div
         className={`absolute w-full flex justify-end z-50 ${
           visible ? "fade-in" : "fade-out"
@@ -152,7 +152,7 @@ export default function Navbar() {
               </span>
             </button>
 
-            {/* Dropdown Menu */}
+            
             <div
               className={`fixed top-0 left-0 w-[80vw] max-w-md h-screen bg-[#fff9f4] shadow-2xl border-r-[6px] border-[#f4d060] transform transition-transform duration-500 ease-in-out flex flex-col justify-between z-20 ${
                 open ? "translate-x-0 animate-glow-border" : "-translate-x-full"
@@ -203,7 +203,7 @@ export default function Navbar() {
         </header>
       </div>
 
-      {/* Modak Shower Effect */}
+      
       {showShower && <ShowerEffect trigger={showShower} />}
     </>
   );

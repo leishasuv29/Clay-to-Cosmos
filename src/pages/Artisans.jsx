@@ -61,7 +61,7 @@ export default function Artisans() {
           🙏 Celebrating the hands that bring devotion to form. 🙏
         </p>
 
-        {/* Custom styles */}
+        
         <style>{`
         .marquee-container {
           overflow: hidden;

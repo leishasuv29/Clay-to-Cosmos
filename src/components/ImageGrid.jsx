@@ -26,7 +26,7 @@ export default function HeroAndGallery() {
       document.body.style.overflow = "auto";
     }
 
-    // Clean up when component unmounts
+   
     return () => {
       document.body.style.overflow = "auto";
     };
