@@ -83,10 +83,9 @@ export default function Navbar() {
           <nav className="px-6 pb-6 space-y-4">
             {[
               ["Home", "/"],
-              ["About Us", "/about"],
-              ["Artisans – Blessed by Ganpati", "#"],
               ["Gallery", "#"],
-              ["Contact", "#"],
+              ["Artisans – Blessed by Ganpati", "#"],
+              ["About Us", "/about"],
             ].map(([label, link], i) => (
               <Link
                 key={i}

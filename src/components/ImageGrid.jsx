@@ -23,7 +23,7 @@ export default function HeroAndGallery() {
   return (
     <div className="font-cormorant relative">
       {/* Hero Section */}
-      <section className="min-h-[90vh] w-full bg-[#fce4ec] flex items-center justify-center px-6 sm:px-16 py-12 rounded-3xl shadow-lg overflow-hidden relative z-10">
+      <section className="min-h-[90vh] w-full bg-[#fce4ec] flex items-center justify-center px-6 sm:px-16 py-12 shadow-lg overflow-hidden relative z-10">
         <div className="absolute inset-0 z-0">
           <div
             className="w-full h-full opacity-20 mix-blend-multiply"
@@ -79,7 +79,7 @@ export default function HeroAndGallery() {
       {/* Gallery Section */}
       <section
         id="gallery"
-        className="bg-white py-16 px-6 sm:px-10 relative z-10"
+        className="bg-[white] py-16 px-6 sm:px-10 relative z-10"
       >
         <h2
           className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
@@ -87,35 +87,46 @@ export default function HeroAndGallery() {
         >
           Ganesh Murti Showcase
         </h2>
-        <p className="text-center text-[#7a4c36] font-medium mb-10">
-          Tap on each murti for a hidden gem ✨
-        </p>
+        <p className="text-center text-[#7a4c36] font-semibold text-xl sm:text-2xl mb-10">
+  Tap on each murti for a hidden gem ✨
+</p>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="gallery">
           {images.map((img, i) => (
-            <div
-              key={i}
-              className="relative group w-full aspect-square overflow-hidden rounded-xl shadow-xl"
-              data-aos="zoom-in-up"
-              data-aos-delay={`${i * 100}`}
-            >
-              {/* Image */}
-              <img
-                src={img}
-                alt={`Murti ${i + 1}`}
-                className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-in-out transform group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(122,76,54,0.4)]"
-              />
+  <div
+    key={i}
+    className="relative group w-full aspect-square overflow-hidden rounded-xl shadow-xl"
+    data-aos="zoom-in-up"
+    data-aos-delay={`${i * 100}`}
+  >
+    <img
+      src={img.url}
+      alt={`Murti ${i + 1}`}
+      className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-in-out transform group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(122,76,54,0.4)]"
+    />
 
-              {/* Ripple Effect */}
-              <span className="absolute inset-0 before:absolute before:inset-0 before:rounded-full before:opacity-0 before:scale-75 group-hover:before:scale-110 group-hover:before:opacity-40 before:transition-all before:duration-700 before:ease-out before:bg-white pointer-events-none"></span>
+    {/* Ripple Effect */}
+    <span className="absolute inset-0 before:absolute before:inset-0 before:rounded-full before:opacity-0 before:scale-75 group-hover:before:scale-110 group-hover:before:opacity-40 before:transition-all before:duration-700 before:ease-out before:bg-white pointer-events-none"></span>
 
-              {/* Overlay */}
-              <div
-                className="absolute inset-0 bg-gradient-to-t from-[#fce4ec]/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 cursor-pointer"
-                onClick={() => openStoryModal(i % 5)}
-              ></div>
-            </div>
-          ))}
+    {/* Price Tag */}
+  <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
+  <div className="bg-white text-[#145A00] text-3xl font-black tracking-tight px-6 py-3 rounded-full shadow-2xl backdrop-blur-sm border-2 border-[#145A00]/50">
+    {img.price}
+  </div>
+</div>
+
+
+
+
+    {/* Overlay to trigger story */}
+    <div
+      className="absolute inset-0 bg-gradient-to-t from-[#fce4ec]/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 cursor-pointer"
+      onClick={() => openStoryModal(i % 5)}
+    ></div>
+  </div>
+))}
+
         </div>
       </section>
 
