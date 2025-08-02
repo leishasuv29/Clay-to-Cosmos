@@ -40,7 +40,7 @@ export default function Artisans() {
     <PageTransitionWrapper>
       <div className="bg-[#fce4ec] min-h-screen py-12 px-4">
         <h1 className="text-3xl sm:text-5xl font-extrabold underline underline-offset-8 decoration-2 decoration-[#7a4c36] text-center font-cormorant text-[#3d5234] mb-10 tracking-wide">
-          Artisans – Blessed by Ganpati
+          Artisans – Blessed by Ganapati
         </h1>
 
         <div className="marquee-container">

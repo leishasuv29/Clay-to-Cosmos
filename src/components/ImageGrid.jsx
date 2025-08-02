@@ -4,9 +4,11 @@ import "aos/dist/aos.css";
 import { images, stories } from "../utils/data";
 import ganeshBG from "../assets/ganapati-bg-1.png";
 import noise from "../assets/noise.jpg";
+import { useNavigate } from "react-router-dom";
 
 export default function HeroAndGallery() {
   const [activeStory, setActiveStory] = useState(null);
+  const navigate = useNavigate();
 
   function openStoryModal(index) {
     setActiveStory(stories[index]);
@@ -67,10 +69,16 @@ export default function HeroAndGallery() {
               eco-consciousness. A blend of devotion, art, and sustainability.
             </p>
             <div className="flex gap-4">
-              <button className="px-6 py-3 rounded-full bg-[#7a4c36] cursor-pointer text-white text-base font-medium shadow hover:bg-[#5f8d4e] transition">
+              <button
+                onClick={() => navigate("/gallery")}
+                className="px-6 py-3 rounded-full bg-[#7a4c36] cursor-pointer text-white text-base font-medium shadow hover:bg-[#5f8d4e] transition"
+              >
                 Explore Now
               </button>
-              <button className="px-6 py-3 rounded-full border border-[#7a4c36] cursor-pointer text-[#7a4c36] text-base font-medium hover:bg-[#fbb6ce] transition">
+              <button
+                onClick={() => navigate("/about")}
+                className="px-6 py-3 rounded-full border border-[#7a4c36] cursor-pointer text-[#7a4c36] text-base font-medium hover:bg-[#fbb6ce] transition"
+              >
                 Learn More
               </button>
             </div>
