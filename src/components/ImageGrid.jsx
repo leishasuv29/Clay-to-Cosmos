@@ -49,12 +49,12 @@ export default function HeroAndGallery() {
           ></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center max-w-[1300px] mx-auto relative z-10">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-24 items-center max-w-[1300px] mx-auto relative z-10">
           <div data-aos="fade-right">
-            <div className="text-left pr-4 mb-5">
-              <h1 className="font-merriweather text-3xl sm:text-5xl font-extrabold text-[#7a4c36] leading-snug mb-3">
+            <div className="text-left pr-4 mr-5 mb-5">
+              <h1 className="font-merriweather md:text-nowrap text-3xl sm:text-5xl md:text-5xl font-bold text-[#7a4c36] mb-3">
                 From{" "}
-                <span className="bg-yellow-400 italic px-2 font-semibold inline-block text-[#16610E] font-poppins">
+                <span className="bg-yellow-400 italic px-1 font-semibold inline-block text-[#16610E] font-poppins">
                   <Typewriter
                     options={{
                       strings: ["Clay to Cosmos"],
@@ -97,7 +97,7 @@ export default function HeroAndGallery() {
             <img
               src={ganeshBG}
               alt="Ganesh Idol"
-              className="w-full max-w-lg mx-12 object-contain rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700"
+              className="w-full max-w-lg mx-auto md:mx-16 object-contain rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700"
             />
           </div>
         </div>

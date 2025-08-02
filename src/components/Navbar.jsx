@@ -117,7 +117,7 @@ export default function Navbar() {
           <img
             src={logo}
             alt="Clay to Cosmos Logo"
-            className="w-40 h-40 object-contain rounded-full transition-transform duration-300 floating hover:scale-105 hover-aura"
+            className="w-32 h-32 m-2 object-contain rounded-full transition-transform duration-300 floating hover:scale-105 hover-aura"
           />
         </Link>
       </div>
