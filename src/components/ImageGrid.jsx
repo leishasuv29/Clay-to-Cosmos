@@ -39,7 +39,7 @@ export default function HeroAndGallery() {
           <div data-aos="fade-right">
             <div className="flex flex-row m-0 p-0 h-16">
               <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
-                From {" "}
+                From{" "}
                 <div className="inline-block m-auto align-middle">
                   <span className="typewriter text-[#16610E] mx-2 bg-yellow-400 italic font-poppins font-bold">
                     Clay to Cosmos
@@ -82,15 +82,14 @@ export default function HeroAndGallery() {
         className="bg-white py-16 px-6 sm:px-10 relative z-10"
       >
         <h2
-  className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
-  data-aos="fade-up"
->
-  Ganesh Murti Showcase
-</h2>
-<p className="text-center text-[#7a4c36] font-medium mb-10">
-  Tap on each murti for a hidden gem ✨
-</p>
-
+          className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
+          data-aos="fade-up"
+        >
+          Ganesh Murti Showcase
+        </h2>
+        <p className="text-center text-[#7a4c36] font-medium mb-10">
+          Tap on each murti for a hidden gem ✨
+        </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {images.map((img, i) => (
