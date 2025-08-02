@@ -52,18 +52,20 @@ CLAY-TO-COSMOS/
 
 ## ✨ Features Implemented
 
-| Element | Feature Name             | Description                                                                   |                    
+| Element | Feature Name         | Description                                                                                        |
+|-------- |----------------------|----------------------------------------------------------------------------------------------------|
+| 1       | Loader Page          | Custom loader animation at the beginning                                                           |
+| 2       | Image Hover Effect   | Image changes to another version on hover                                                          |
+| 3       | Image Grid           | Interactive **Murti Grid** where clicking on a Ganesh image opens a beautiful story modal          |
+| 4       | Navbar               | Smooth, responsive navigation with dropdown                                                        |
+| 8       | Ripple Cursor Effect | Subtle global ripple follows your mouse cursor                                                     |
+| 10      | Mystery Element 🎁   | Menu icon triggers **modak & flower shower** + **music**; clicking a murti shows a **story modal** |
 
-| 1       | Loader Page              | Custom loader animation at the beginning                                                        | 
-| 2       | Image Hover Effect       | Image changes to another version on hover                                                       | 
-| 3       | Image Grid               | Interactive **Murti Grid** where clicking on a Ganesh image opens a beautiful story modal       | 
-| 4       | Navbar                   | Smooth, responsive navigation with dropdown                                                     | 
-| 8       | Ripple Cursor Effect     | Subtle global ripple follows your mouse cursor                                                  | 
-| 10      | Mystery Element 🎁       | Clicking the **menu icon** triggers a **modak & flower shower**; image click opens Murti story | 
-
-> 🧁 **Element 10 (Mystery Element)** includes two magical touches:  
+> 🧁 **Element 10 (Mystery Element)** includes three magical touches:  
 > - **Modak & flower shower** appears when the menu is toggled  
-> - **Ganesh Murti click** opens a special **story modal**, creating a deeper spiritual connection 🌟  
+> - **Soothing background music** starts playing on menu click  
+> - **Ganesh Murti click** opens a special **story modal**, creating a deeper spiritual connection 🌟
+
 
 ---
 
