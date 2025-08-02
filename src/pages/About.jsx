@@ -1,26 +1,30 @@
-import { useEffect, useState } from "react";
+import TeamSection from "../components/OurTeam";
+import PageTransitionWrapper from "../components/PageTransitionWrapper";
 
 export default function About() {
-  const [show, setShow] = useState(false);
-
-  useEffect(() => {
-    // Trigger animation on mount
-    const timer = setTimeout(() => setShow(true), 50);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
-    <div
-      className={`transition-all duration-700 ease-in-out transform ${
-        show ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-      } px-10 py-16 min-h-[80vh]`}
-    >
-      <h1 className="text-4xl font-bold text-[#5f8d4e] mb-4">
-        About Us
-      </h1>
-      <p className="text-lg text-[#3d5234] leading-relaxed max-w-2xl">
-        MuseGrid celebrates the divine journey of Lord Ganesh, through eco-friendly clay art...
-      </p>
-    </div>
+    <PageTransitionWrapper>
+      <div className="relative w-full min-h-screen bg-white overflow-hidden">
+        <div className="absolute w-full min-h-[100vh] max-h-screen bg-[#fce4ec] overflow-hidden flex flex-col items-center justify-evenly">
+          <div className="-mt-12">
+            <h1 className="text-3xl sm:text-5xl font-extrabold font-cormorant text-[#5f8d4e] mb-6 text-center">
+              About Us
+            </h1>
+            <p className="text-base font-lora sm:text-lg text-[#3d5234] leading-relaxed max-w-3xl text-center mt-2">
+              <strong>Clay to Cosmos</strong> brings together artisans,
+              storytellers, and eco-devotees to celebrate Ganpati in all his
+              divine beauty. Each murti is a journey from clay to cosmos 🌿✨.
+            </p>
+          </div>
+
+          {/* Marquee */}
+
+          {/* Team Section */}
+          <div className="flex flex-col items-center justify-center">
+            <TeamSection />
+          </div>
+        </div>
+      </div>
+    </PageTransitionWrapper>
   );
 }

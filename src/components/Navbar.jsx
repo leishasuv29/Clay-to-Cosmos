@@ -33,7 +33,7 @@ export default function Navbar() {
   };
 
   return (
-    <div className="bg-white p-2 sm:p-4 flex justify-between items-center font-serif shadow-md relative">
+    <div className="overflow-hidden bg-white p-2 sm:p-4 flex justify-between items-center font-serif shadow-md relative">
       {/* Left side – Menu */}
       <div className="relative inline-block text-left ml-2" ref={dropdownRef}>
         <button
