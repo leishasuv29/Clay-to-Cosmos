@@ -41,7 +41,7 @@ export default function HeroAndGallery() {
               <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
                 From{" "}
                 <div className="inline-block m-auto align-middle">
-                  <span className="typewriter text-[#16610E] mx-2 bg-yellow-400 italic font-poppins font-bold">
+                  <span className="typewriter text-[#16610E] mx-2 pl-2 bg-yellow-400 italic font-poppins font-bold">
                     Clay to Cosmos
                   </span>
                 </div>
@@ -56,10 +56,10 @@ export default function HeroAndGallery() {
               eco-consciousness. A blend of devotion, art, and sustainability.
             </p>
             <div className="flex gap-4">
-              <button className="px-6 py-3 rounded-full bg-[#7a4c36] text-white text-base font-medium shadow hover:bg-[#5f8d4e] transition">
+              <button className="px-6 py-3 rounded-full bg-[#7a4c36] cursor-pointer text-white text-base font-medium shadow hover:bg-[#5f8d4e] transition">
                 Explore Now
               </button>
-              <button className="px-6 py-3 rounded-full border border-[#7a4c36] text-[#7a4c36] text-base font-medium hover:bg-[#fbb6ce] transition">
+              <button className="px-6 py-3 rounded-full border border-[#7a4c36] cursor-pointer text-[#7a4c36] text-base font-medium hover:bg-[#fbb6ce] transition">
                 Learn More
               </button>
             </div>
