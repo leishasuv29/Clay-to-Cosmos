@@ -23,7 +23,7 @@ export default function HeroAndGallery() {
   return (
     <div className="font-cormorant relative">
       {/* Hero Section */}
-      <section className="min-h-[90vh] w-full bg-[#fce4ec] flex items-center justify-center px-6 sm:px-16 py-12 rounded-3xl shadow-lg overflow-hidden relative z-10">
+      <section className="min-h-[90vh] w-full bg-[#fce4ec] flex items-center justify-center px-6 sm:px-16 py-12 shadow-lg overflow-hidden relative z-10">
         <div className="absolute inset-0 z-0">
           <div
             className="w-full h-full opacity-20 mix-blend-multiply"
@@ -79,7 +79,7 @@ export default function HeroAndGallery() {
       {/* Gallery Section */}
       <section
         id="gallery"
-        className="bg-white py-16 px-6 sm:px-10 relative z-10"
+        className="bg-[white] py-16 px-6 sm:px-10 relative z-10"
       >
         <h2
           className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
@@ -87,9 +87,10 @@ export default function HeroAndGallery() {
         >
           Ganesh Murti Showcase
         </h2>
-        <p className="text-center text-[#7a4c36] font-medium mb-10">
-          Tap on each murti for a hidden gem ✨
-        </p>
+        <p className="text-center text-[#7a4c36] font-semibold text-xl sm:text-2xl mb-10">
+  Tap on each murti for a hidden gem ✨
+</p>
+
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6" id="gallery">
           {images.map((img, i) => (
