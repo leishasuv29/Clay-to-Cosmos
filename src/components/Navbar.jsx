@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import bappaImage from "../assets/bappa.jpg";
 import ShowerEffect from "./ShowerEffect";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -81,19 +82,19 @@ export default function Navbar() {
 
           <nav className="px-6 pb-6 space-y-4">
             {[
-              ["Home", "#"],
-              ["About Us", "#"],
+              ["Home", "/"],
+              ["About Us", "/about"],
               ["Artisans – Blessed by Ganpati", "#"],
               ["Gallery", "#"],
               ["Contact", "#"],
             ].map(([label, link], i) => (
-              <a
+              <Link
                 key={i}
-                href={link}
+                to={link}
                 className="block px-6 py-3 rounded-xl text-white bg-[#3d5234] hover:bg-[#2c3f27] hover:scale-105 transition-all duration-300 ease-in-out text-center font-medium shadow-sm tracking-wide text-lg sm:text-xl"
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </nav>
 
