@@ -2,21 +2,31 @@ import { useEffect } from "react";
 
 export default function RippleEffect() {
   useEffect(() => {
+    const gallery = document.getElementById("gallery");
+    if (!gallery) return;
+
     const handleMouseMove = (e) => {
       const ripple = document.createElement("div");
       ripple.className = "soft-ripple";
-      ripple.style.left = `${e.clientX}px`;
-      ripple.style.top = `${e.clientY}px`;
-      document.body.appendChild(ripple);
+
+      const rect = gallery.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      ripple.style.left = `${x}px`;
+      ripple.style.top = `${y}px`;
+
+      // Important: append ripple to the gallery, not body
+      gallery.appendChild(ripple);
 
       setTimeout(() => {
         ripple.remove();
-      }, 1200); // duration to match the animation
+      }, 1200);
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    gallery.addEventListener("mousemove", handleMouseMove);
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      gallery.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
