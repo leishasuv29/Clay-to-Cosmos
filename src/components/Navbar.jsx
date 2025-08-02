@@ -124,7 +124,7 @@ export default function Navbar() {
 
       {/* Menu Button with same scroll visibility */}
       <div
-        className={`absolute w-full flex justify-end z-30 ${
+        className={`absolute w-full flex justify-end z-50 ${
           visible ? "fade-in" : "fade-out"
         }`}
       >
@@ -132,7 +132,7 @@ export default function Navbar() {
           <div className="relative" ref={dropdownRef}>
             <button
               onClick={handleMenuClick}
-              className={`bg-[#3d5234] text-white px-6 py-3 rounded-full text-lg sm:text-xl font-medium shadow-lg hover:bg-[#2c3f27] transition-all duration-300 flex items-center gap-3 ${
+              className={`bg-[#3d5234] text-white hover:cursor-pointer px-6 py-3 rounded-full text-lg sm:text-xl font-medium shadow-lg hover:bg-[#2c3f27] transition-all duration-300 flex items-center gap-3 ${
                 open ? "rotate-3 scale-95" : ""
               }`}
             >
@@ -154,7 +154,7 @@ export default function Navbar() {
 
             {/* Dropdown Menu */}
             <div
-              className={`fixed top-0 left-0 w-[80vw] max-w-md h-full bg-[#fff9f4] shadow-2xl border-r-[6px] border-[#f4d060] transform transition-transform duration-500 ease-in-out flex flex-col justify-between z-20 ${
+              className={`fixed top-0 left-0 w-[80vw] max-w-md h-screen bg-[#fff9f4] shadow-2xl border-r-[6px] border-[#f4d060] transform transition-transform duration-500 ease-in-out flex flex-col justify-between z-20 ${
                 open ? "translate-x-0 animate-glow-border" : "-translate-x-full"
               }`}
             >
