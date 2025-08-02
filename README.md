@@ -73,7 +73,7 @@ With growing awareness around sustainability, **Clay to Cosmos** was created to 
 | 7       | Our Team Section    | Section showcasing the creators and their roles                             |
 | 8       | Ripple Effect       | Subtle global ripple follows your mouse cursor                              |
 | 9       | Text Animation      | Animated Ganesh-themed text headers with subtle glowing/bouncing effects    |
-| 10      |🌟Mystery Element🌟 | A divine trio: Modak & Flower Shower, Background Music, Story Modal         |
+| 10      | 🌟 Mystery Element | A divine trio: Modak & Flower Shower, Background Music, Story Modal         |
 
 ---
 
