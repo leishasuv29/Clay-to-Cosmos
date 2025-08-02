@@ -119,6 +119,7 @@ export default function Navbar() {
                   <Link
                     key={i}
                     to={link}
+                    onClick={() => setOpen(false)}
                     className="block px-6 py-3 rounded-xl text-white bg-[#3d5234] hover:bg-[#2c3f27] hover:scale-105 transition-all duration-300 text-center text-lg"
                   >
                     {label}
