@@ -6,7 +6,6 @@ export default function PageTransitionWrapper({ children }) {
 
   return (
     <div className="absolute w-full min-h-screen flex flex-col">
-      {/* Page Content */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{

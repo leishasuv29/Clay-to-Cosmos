@@ -22,7 +22,7 @@ export default function HeroAndGallery() {
 
   return (
     <div className="font-cormorant relative">
-      {/* Hero Section */}
+     
       <section className="min-h-[90vh] w-full bg-[#fce4ec] flex items-center justify-center px-6 sm:px-16 py-12 shadow-lg overflow-hidden relative z-10">
         <div className="absolute inset-0 z-0">
           <div
@@ -35,7 +35,7 @@ export default function HeroAndGallery() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-[1300px] mx-auto relative z-10">
-          {/* Text content */}
+         
           <div data-aos="fade-right">
             <div className="flex flex-row m-0 p-0 h-16">
               <h1 className="font-merriweather text-4xl sm:text-5xl font-extrabold text-[#7a4c36] leading-tight mb-6">
@@ -65,7 +65,6 @@ export default function HeroAndGallery() {
             </div>
           </div>
 
-          {/* Hero Image */}
           <div data-aos="fade-left">
             <img
               src={ganeshBG}
@@ -76,7 +75,6 @@ export default function HeroAndGallery() {
         </div>
       </section>
 
-      {/* Gallery Section */}
       <section
         id="gallery"
         className="bg-[white] py-16 px-6 sm:px-10 relative z-10"
@@ -106,10 +104,8 @@ export default function HeroAndGallery() {
       className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-in-out transform group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(122,76,54,0.4)]"
     />
 
-    {/* Ripple Effect */}
     <span className="absolute inset-0 before:absolute before:inset-0 before:rounded-full before:opacity-0 before:scale-75 group-hover:before:scale-110 group-hover:before:opacity-40 before:transition-all before:duration-700 before:ease-out before:bg-white pointer-events-none"></span>
 
-    {/* Price Tag */}
   <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
   <div className="bg-white text-[#145A00] text-3xl font-black tracking-tight px-6 py-3 rounded-full shadow-2xl backdrop-blur-sm border-2 border-[#145A00]/50">
     {img.price}
@@ -119,7 +115,6 @@ export default function HeroAndGallery() {
 
 
 
-    {/* Overlay to trigger story */}
     <div
       className="absolute inset-0 bg-gradient-to-t from-[#fce4ec]/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 cursor-pointer"
       onClick={() => openStoryModal(i % 5)}
@@ -130,7 +125,6 @@ export default function HeroAndGallery() {
         </div>
       </section>
 
-      {/* Modal */}
       {activeStory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           <div

@@ -16,7 +16,6 @@ export default function RippleEffect() {
       ripple.style.left = `${x}px`;
       ripple.style.top = `${y}px`;
 
-      // Important: append ripple to the gallery, not body
       gallery.appendChild(ripple);
 
       setTimeout(() => {

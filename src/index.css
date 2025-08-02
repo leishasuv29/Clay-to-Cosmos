@@ -104,12 +104,12 @@ body {
   position: fixed;
   width: 60px;
   height: 60px;
-  background: rgba(255, 255, 255, 0.2); /* soft white glow */
+  background: rgba(255, 255, 255, 0.2); 
   border-radius: 50%;
   pointer-events: none;
   transform: translate(-50%, -50%);
   animation: ripple-fade 1.2s ease-out;
-  backdrop-filter: blur(4px); /* subtle glow */
+  backdrop-filter: blur(4px); 
   z-index: 50;
 }
 

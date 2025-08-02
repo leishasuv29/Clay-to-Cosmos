@@ -33,7 +33,6 @@ export default function TeamSection() {
             onMouseLeave={() => setHoveredIndex(null)}
             className="relative bg-[#fce4ec] p-2 rounded-2xl shadow-xl w-[200px] h-[80px] flex flex-col justify-center items-center group transition-all duration-300 hover:bg-[#d1efc6] hover:cursor-pointer"
           >
-            {/* Profile image on hover */}
             {hoveredIndex === index && (
               <div
                 className={`absolute top-1/2 transform -translate-y-1/2 ${

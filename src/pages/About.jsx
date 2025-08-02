@@ -8,7 +8,6 @@ export default function About() {
       <div className="relative w-full min-h-screen bg-white overflow-hidden">
         <div className="absolute w-full min-h-[100vh] bg-[#fce4ec] overflow-y-auto flex flex-col items-center pt-0 pb-2">
           
-          {/* Ganpati image at top with minimal spacing */}
           <div className="flex justify-center mb-1">
             <img
               src={ganpatiImage}
@@ -17,7 +16,6 @@ export default function About() {
             />
           </div>
 
-          {/* About Text */}
           <div className="mb-3">
             <h1 className="text-3xl sm:text-5xl font-extrabold font-cormorant text-[#5f8d4e] mb-3 text-center">
               About Us
@@ -29,7 +27,6 @@ export default function About() {
             </p>
           </div>
 
-          {/* Team Section */}
           <div className="flex flex-col items-center justify-center mt-2">
             <TeamSection />
           </div>
