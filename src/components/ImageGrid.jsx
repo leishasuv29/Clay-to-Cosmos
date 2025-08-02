@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { images, stories } from "../utils/data";
 import ganeshBG from "../assets/ganapati-bg-1.png";
 import noise from "../assets/noise.jpg";
+import Typewriter from "typewriter-effect";
 import { useNavigate } from "react-router-dom";
 
 export default function HeroAndGallery() {
@@ -48,13 +49,23 @@ export default function HeroAndGallery() {
           ></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center max-w-[1300px] mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-center max-w-[1300px] mx-auto relative z-10">
           <div data-aos="fade-right">
             <div className="text-left pr-4 mb-5">
               <h1 className="font-merriweather text-3xl sm:text-5xl font-extrabold text-[#7a4c36] leading-snug mb-3">
                 From{" "}
-                <span className="bg-yellow-300 italic text-[#16610E] px-2 rounded-sm font-poppins">
-                  Clay to Cosmos
+                <span className="bg-yellow-400 italic px-2 font-semibold inline-block text-[#16610E] font-poppins">
+                  <Typewriter
+                    options={{
+                      strings: ["Clay to Cosmos"],
+                      autoStart: true,
+                      loop: true,
+                      delay: 70,
+                      deleteSpeed: 30,
+                      pauseFor: 4000,
+                      cursor: '|'
+                    }}
+                  />
                 </span>
               </h1>
               <h2 className="font-merriweather text-2xl sm:text-4xl font-semibold text-[#7a4c36]">
@@ -86,7 +97,7 @@ export default function HeroAndGallery() {
             <img
               src={ganeshBG}
               alt="Ganesh Idol"
-              className="w-full max-w-lg mx-auto object-contain rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700"
+              className="w-full max-w-lg mx-12 object-contain rounded-3xl shadow-2xl hover:scale-105 transition-transform duration-700"
             />
           </div>
         </div>
