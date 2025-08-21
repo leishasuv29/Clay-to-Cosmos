@@ -176,7 +176,7 @@ export default function Navbar() {
                 {[
                   ["Home", "/"],
                   ["Gallery", "/gallery"],
-                  ["Artisans – Blessed by Ganapati", "/artisans"],
+                  ["Register/Login", "/user"],
                   ["About Us", "/about"],
                 ].map(([label, link], i) => (
                   <Link
