@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { useFormik } from "formik";
+import axios from "axios";
 import PageTransitionWrapper from "../components/PageTransitionWrapper";
 import { loginSchema, registerSchema } from "../utils/userValidation";
 
 function RegisterLogin() {
   const [isUser, setIsUser] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState("");
 
-  // ✅ Formik instance (switch schema based on isUser)
+  // ✅ Formik instance
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -15,13 +18,34 @@ function RegisterLogin() {
       contact: "",
     },
     validationSchema: isUser ? loginSchema : registerSchema,
-    onSubmit: (values, { resetForm }) => {
-      if (isUser) {
-        console.log("Login Data:", values);
-      } else {
-        console.log("Register Data:", values);
+    onSubmit: async (values, { resetForm }) => {
+      setLoading(true);
+      setServerError("");
+
+      try {
+        let res;
+        if (isUser) {
+          // 🔹 Login request
+          res = await axios.post("http://localhost:5000/api/users/login", {
+            email: values.email,
+            password: values.password,
+          });
+        } else {
+          // 🔹 Register request
+          res = await axios.post("http://localhost:5000/api/users/register", values);
+        }
+
+       // ✅ Save token to localStorage
+localStorage.setItem("token", res.data.token);
+
+alert(`${isUser ? "Login" : "Registration"} successful!`);
+resetForm();
+
+      } catch (err) {
+        setServerError(err.response?.data?.message || "Something went wrong");
+      } finally {
+        setLoading(false);
       }
-      resetForm();
     },
   });
 
@@ -103,11 +127,17 @@ function RegisterLogin() {
               </div>
             )}
 
+            {/* Server error */}
+            {serverError && (
+              <p className="text-red-600 text-sm text-center">{serverError}</p>
+            )}
+
             <button
               type="submit"
-              className="w-full bg-[#7a4c36] text-white py-3 rounded-lg font-semibold hover:bg-[#5e3828] transition font-quicksand text-lg"
+              disabled={loading}
+              className="w-full bg-[#7a4c36] text-white py-3 rounded-lg font-semibold hover:bg-[#5e3828] transition font-quicksand text-lg disabled:opacity-60"
             >
-              {isUser ? "Login" : "Register"}
+              {loading ? "Processing..." : isUser ? "Login" : "Register"}
             </button>
           </form>
 
