@@ -1,14 +1,23 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import idolRoutes from './routes/idolRoutes.js'
-import userRoutes from './routes/userRoutes.js'
+import idolRoutes from "./routes/idolRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
+import cookieParser from "cookie-parser";
+import morgan from "morgan";
 
 dotenv.config();
 
 const app = express();
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    credentials: true, // allow cookies
+  })
+);
 app.use(express.json());
+app.use(cookieParser());
+app.use(morgan("dev"));
 
 // Test route
 app.get("/", (req, res) => {
@@ -16,8 +25,8 @@ app.get("/", (req, res) => {
 });
 
 //Routes
-app.use('/api/idols', idolRoutes)
-app.use('/api/users', userRoutes)
+app.use("/api/idols", idolRoutes);
+app.use("/api/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

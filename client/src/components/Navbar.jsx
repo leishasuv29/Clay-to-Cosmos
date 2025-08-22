@@ -4,6 +4,8 @@ import logo from "../assets/logo.png";
 import music from "../assets/music.mp3";
 import ShowerEffect from "./ShowerEffect";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { clearUser } from "../redux/userSlice";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -12,6 +14,8 @@ export default function Navbar() {
   const lastScrollY = useRef(0);
   const dropdownRef = useRef(null);
   const audioRef = useRef(new Audio(music));
+  const { user } = useSelector((s) => s.user);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -27,9 +31,9 @@ export default function Navbar() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > lastScrollY.current) {
-        setVisible(false); 
+        setVisible(false);
       } else {
-        setVisible(true); 
+        setVisible(true);
       }
       lastScrollY.current = currentScrollY;
     };
@@ -48,6 +52,11 @@ export default function Navbar() {
         .play()
         .catch((err) => console.warn("Autoplay blocked:", err));
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(clearUser());
+    setOpen(false);
   };
 
   return (
@@ -107,7 +116,6 @@ export default function Navbar() {
         }
       `}</style>
 
-      
       <div
         className={`fixed -top-6 left-4 z-50 ${
           visible ? "fade-in" : "fade-out"
@@ -122,7 +130,6 @@ export default function Navbar() {
         </Link>
       </div>
 
-      
       <div
         className={`absolute w-full flex justify-end z-50 ${
           visible ? "fade-in" : "fade-out"
@@ -152,7 +159,6 @@ export default function Navbar() {
               </span>
             </button>
 
-            
             <div
               className={`fixed top-0 left-0 w-[80vw] max-w-md h-screen bg-[#fff9f4] shadow-2xl border-r-[6px] border-[#f4d060] transform transition-transform duration-500 ease-in-out flex flex-col justify-between z-20 ${
                 open ? "translate-x-0 animate-glow-border" : "-translate-x-full"
@@ -176,7 +182,6 @@ export default function Navbar() {
                 {[
                   ["Home", "/"],
                   ["Gallery", "/gallery"],
-                  ["Register/Login", "/user"],
                   ["About Us", "/about"],
                 ].map(([label, link], i) => (
                   <Link
@@ -188,6 +193,23 @@ export default function Navbar() {
                     {label}
                   </Link>
                 ))}
+
+                {!user ? (
+                  <Link
+                    to="/user"
+                    onClick={() => setOpen(false)}
+                    className="block px-6 py-3 rounded-xl text-white bg-[#3d5234] hover:bg-[#2c3f27] hover:scale-105 transition-all duration-300 hover:cursor-pointer text-center text-lg"
+                  >
+                    Register / Login
+                  </Link>
+                ) : (
+                  <button
+                    onClick={handleLogout}
+                    className="w-full px-6 py-3 rounded-xl text-white bg-red-500 hover:bg-red-600 hover:scale-105 transition-all duration-300 hover:cursor-pointer text-center text-lg"
+                  >
+                    Logout
+                  </button>
+                )}
               </nav>
 
               <div className="text-center text-sm text-[#6b4b39] py-4 italic border-t border-[#e8d9cc] bg-[#fdf6f0]">
@@ -203,7 +225,6 @@ export default function Navbar() {
         </header>
       </div>
 
-      
       {showShower && <ShowerEffect trigger={showShower} />}
     </>
   );

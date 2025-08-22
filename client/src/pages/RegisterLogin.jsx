@@ -2,9 +2,14 @@ import { useState } from "react";
 import { useFormik } from "formik";
 import axios from "axios";
 import PageTransitionWrapper from "../components/PageTransitionWrapper";
-import { loginSchema, registerSchema } from "../utils/userValidation";
+import { loginSchema, registerSchema } from "../utils/yupValidation";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "../redux/userSlice";
+import { useNavigate } from "react-router-dom";
 
 function RegisterLogin() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [isUser, setIsUser] = useState(true);
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState("");
@@ -16,6 +21,7 @@ function RegisterLogin() {
       email: "",
       password: "",
       contact: "",
+      userType: "Customer", // default
     },
     validationSchema: isUser ? loginSchema : registerSchema,
     onSubmit: async (values, { resetForm }) => {
@@ -26,21 +32,33 @@ function RegisterLogin() {
         let res;
         if (isUser) {
           // 🔹 Login request
-          res = await axios.post("http://localhost:5000/api/users/login", {
-            email: values.email,
-            password: values.password,
-          });
+          res = await axios.post(
+            "http://localhost:5000/api/users/login",
+            {
+              email: values.email,
+              password: values.password,
+            },
+            { withCredentials: true }
+          );
         } else {
-          // 🔹 Register request
-          res = await axios.post("http://localhost:5000/api/users/register", values);
+          // 🔹 Register request (includes userType)
+          res = await axios.post(
+            "http://localhost:5000/api/users/register",
+            values,
+            { withCredentials: true }
+          );
         }
 
-       // ✅ Save token to localStorage
-localStorage.setItem("token", res.data.token);
+        const { token, user } = res.data;
 
-alert(`${isUser ? "Login" : "Registration"} successful!`);
-resetForm();
+        // Save both in localStorage
+        localStorage.setItem("token", token);
+        localStorage.setItem("role", user.role);
 
+        dispatch(setUser(user)); // keep redux in sync
+        alert(`${isUser ? "Login" : "Registration"} successful!`);
+        resetForm();
+        navigate("/");
       } catch (err) {
         setServerError(err.response?.data?.message || "Something went wrong");
       } finally {
@@ -60,23 +78,48 @@ resetForm();
         <div className="bg-white shadow-lg rounded-2xl p-8 pt-10 w-full max-w-md">
           <form onSubmit={formik.handleSubmit} className="space-y-4">
             {!isUser && (
-              <div>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  value={formik.values.name}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7a4c36] 
-                  font-quicksand text-base placeholder:font-lora placeholder-gray-500"
-                />
-                {formik.touched.name && formik.errors.name && (
-                  <p className="text-red-500 text-sm mt-1">{formik.errors.name}</p>
-                )}
-              </div>
+              <>
+                {/* User Type Dropdown */}
+                <div className="w-full p-3 pl-1 cursor-pointer border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7a4c36] font-quicksand text-base text-gray-700 [text-indent:2px]">
+                  <select
+                    name="userType"
+                    value={formik.values.userType}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="w-full cursor-pointer"
+                  >
+                    <option value="Customer">Customer</option>
+                    <option value="Artisan">Artisan</option>
+                  </select>
+                  {formik.touched.userType && formik.errors.userType && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formik.errors.userType}
+                    </p>
+                  )}
+                </div>
+
+                {/* Name */}
+                <div>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#7a4c36] 
+                    font-quicksand text-base placeholder:font-lora placeholder-gray-500"
+                  />
+                  {formik.touched.name && formik.errors.name && (
+                    <p className="text-red-500 text-sm mt-1">
+                      {formik.errors.name}
+                    </p>
+                  )}
+                </div>
+              </>
             )}
 
+            {/* Email */}
             <div>
               <input
                 type="email"
@@ -89,10 +132,13 @@ resetForm();
                 font-quicksand text-base placeholder:font-lora placeholder-gray-500"
               />
               {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.email}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {formik.errors.email}
+                </p>
               )}
             </div>
 
+            {/* Password */}
             <div>
               <input
                 type="password"
@@ -105,7 +151,9 @@ resetForm();
                 font-quicksand text-base placeholder:font-lora placeholder-gray-500"
               />
               {formik.touched.password && formik.errors.password && (
-                <p className="text-red-500 text-sm mt-1">{formik.errors.password}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {formik.errors.password}
+                </p>
               )}
             </div>
 
@@ -122,7 +170,9 @@ resetForm();
                   font-quicksand text-base placeholder:font-lora placeholder-gray-500"
                 />
                 {formik.touched.contact && formik.errors.contact && (
-                  <p className="text-red-500 text-sm mt-1">{formik.errors.contact}</p>
+                  <p className="text-red-500 text-sm mt-1">
+                    {formik.errors.contact}
+                  </p>
                 )}
               </div>
             )}
@@ -135,7 +185,7 @@ resetForm();
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#7a4c36] text-white py-3 rounded-lg font-semibold hover:bg-[#5e3828] transition font-quicksand text-lg disabled:opacity-60"
+              className="w-full bg-[#7a4c36] text-white cursor-pointer py-3 rounded-lg font-semibold hover:bg-[#5e3828] transition font-quicksand text-lg disabled:opacity-60"
             >
               {loading ? "Processing..." : isUser ? "Login" : "Register"}
             </button>

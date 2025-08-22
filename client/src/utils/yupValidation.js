@@ -19,4 +19,18 @@ const registerSchema = Yup.object({
     .required("Contact number is required"),
 });
 
-export { loginSchema, registerSchema };
+const customOrderSchema = Yup.object({
+    description: Yup.string().required("Description is required."),
+    size: Yup.string().required("Size is required (e.g. 12 inch)."),
+    material: Yup.string().required("Material is required."),
+    file: Yup.mixed()
+      .required("Please attach an image or sketch.")
+      .test("fileSize", "Max file size 5MB", (f) =>
+        f ? f.size <= 5 * 1024 * 1024 : false
+      )
+      .test("fileType", "Only image files allowed", (f) =>
+        f ? f.type.startsWith("image/") : false
+      ),
+  });
+
+export { loginSchema, registerSchema, customOrderSchema };
