@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
 import idolRoutes from './routes/idolRoutes.js'
+import userRoutes from './routes/userRoutes.js'
 
 dotenv.config();
 
@@ -15,8 +16,8 @@ app.get("/", (req, res) => {
 });
 
 //Routes
-app.use('/idols', idolRoutes)
-
+app.use('/api/idols', idolRoutes)
+app.use('/api/users', userRoutes)
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
