@@ -4,6 +4,7 @@ import HeroAndGallery from "../components/ImageGrid";
 import RippleEffect from "../components/RippleEffect";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchUserProfile } from "../redux/userSlice";
+import { fetchIdols } from "../redux/idolSlice";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
@@ -12,11 +13,15 @@ export default function Home() {
   const { user } = useSelector((s) => s.user);
 
   useEffect(() => {
-    if (user?.id && !user?.name) {
+    if (user && user.token && !user.name) {
       // fetch profile if only id exists
-      dispatch(fetchUserProfile(user.id));
+      dispatch(fetchUserProfile());
     }
   }, [user, dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchIdols());
+  }, [dispatch]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 4000);

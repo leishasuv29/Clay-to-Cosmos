@@ -4,7 +4,7 @@ import axios from "axios";
 // Async thunk: fetch profile by user_id
 export const fetchUserProfile = createAsyncThunk(
   "user/fetchProfile",
-  async (id, { rejectWithValue }) => {
+  async ({ rejectWithValue }) => {
     try {
       const res = await axios.get(`http://localhost:5000/api/users/profile`, {withCredentials: true});
       return res.data; // backend should return { id, name, email, ... }
@@ -33,8 +33,8 @@ const userSlice = createSlice({
       if (action.payload?.token) {
         localStorage.setItem("token", action.payload.token);
       }
-      if (action.payload?.id) {
-        localStorage.setItem("role", action.payload.role);
+      if (action.payload?.user?.role) {
+        localStorage.setItem("role", action.payload.user.role);
       }
     },
     clearUser: (state) => {

@@ -1,15 +1,18 @@
 import { useEffect, useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { images, stories } from "../utils/data";
+import { stories } from "../utils/data";
 import ganeshBG from "../assets/ganapati-bg-1.png";
 import noise from "../assets/noise.jpg";
 import Typewriter from "typewriter-effect";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function HeroAndGallery() {
   const [activeStory, setActiveStory] = useState(null);
   const navigate = useNavigate();
+  const images = useSelector((s) => s.idols.idols);
+  const { loading, error } = useSelector((s) => s.idols);
 
   function openStoryModal(index) {
     setActiveStory(stories[index]);
@@ -26,7 +29,6 @@ export default function HeroAndGallery() {
       document.body.style.overflow = "auto";
     }
 
-   
     return () => {
       document.body.style.overflow = "auto";
     };
@@ -63,7 +65,7 @@ export default function HeroAndGallery() {
                       delay: 70,
                       deleteSpeed: 30,
                       pauseFor: 4000,
-                      cursor: '|'
+                      cursor: "|",
                     }}
                   />
                 </span>
@@ -103,53 +105,70 @@ export default function HeroAndGallery() {
         </div>
       </section>
 
-      <section
-        id="gallery"
-        className="bg-[white] py-16 px-6 sm:px-10 relative z-10"
-      >
-        <h2
-          className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
-          data-aos="fade-up"
-        >
-          Ganesh Murti Showcase
-        </h2>
-        <p className="text-center text-[#7a4c36] font-semibold text-xl sm:text-2xl mb-10">
-          Tap on each murti for a hidden gem ✨
-        </p>
-
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+      {!loading ? (
+        <section
           id="gallery"
+          className="bg-[white] py-16 px-6 sm:px-10 relative z-10"
         >
-          {images.map((img, i) => (
-            <div
-              key={i}
-              className="relative group w-full aspect-square overflow-hidden rounded-xl shadow-xl"
-              data-aos="zoom-in-up"
-              data-aos-delay={`${i * 100}`}
-            >
-              <img
-                src={img.url}
-                alt={`Murti ${i + 1}`}
-                className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-in-out transform group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(122,76,54,0.4)]"
-              />
+          <h2
+            className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
+            data-aos="fade-up"
+          >
+            Ganesh Murti Showcase
+          </h2>
+          <p className="text-center text-[#7a4c36] font-semibold text-xl sm:text-2xl mb-10">
+            Tap on each murti for a hidden gem ✨
+          </p>
 
-              <span className="absolute inset-0 before:absolute before:inset-0 before:rounded-full before:opacity-0 before:scale-75 group-hover:before:scale-110 group-hover:before:opacity-40 before:transition-all before:duration-700 before:ease-out before:bg-white pointer-events-none"></span>
-
-              <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
-                <div className="bg-white text-[#145A00] text-3xl font-black tracking-tight px-6 py-3 rounded-full shadow-2xl backdrop-blur-sm border-2 border-[#145A00]/50">
-                  {img.price}
-                </div>
-              </div>
-
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
+            id="gallery"
+          >
+            {images.map((img, i) => (
               <div
-                className="absolute inset-0 bg-gradient-to-t from-[#fce4ec]/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 cursor-pointer"
-                onClick={() => openStoryModal(i % 5)}
-              ></div>
-            </div>
-          ))}
-        </div>
-      </section>
+                key={img.idol_id}
+                className="relative group w-full aspect-square overflow-hidden rounded-xl shadow-xl"
+                data-aos="zoom-in-up"
+                data-aos-delay={`${i * 100}`}
+              >
+                <img
+                  src={img.image_url}
+                  alt={`Murti ${i + 1}`}
+                  className="w-full h-full object-cover rounded-xl transition-transform duration-700 ease-in-out transform group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(122,76,54,0.4)]"
+                />
+
+                <span className="absolute inset-0 before:absolute before:inset-0 before:rounded-full before:opacity-0 before:scale-75 group-hover:before:scale-110 group-hover:before:opacity-40 before:transition-all before:duration-700 before:ease-out before:bg-white pointer-events-none"></span>
+
+                <div className="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:scale-110">
+                  <div className="bg-white text-[#145A00] text-3xl font-black tracking-tight px-6 py-3 rounded-full shadow-2xl backdrop-blur-sm border-2 border-[#145A00]/50">
+                    {img.price}
+                  </div>
+                </div>
+
+                <div
+                  className="absolute inset-0 bg-gradient-to-t from-[#fce4ec]/60 to-transparent opacity-0 group-hover:opacity-100 transition duration-700 cursor-pointer"
+                  onClick={() => openStoryModal(i % 5)}
+                ></div>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section
+          id="gallery"
+          className="bg-[white] py-16 px-6 sm:px-10 relative z-10"
+        >
+          <h2
+            className="text-center font-merriweather text-[clamp(2rem,3vw,3rem)] font-extrabold text-[#16610E] mb-4 leading-snug"
+            data-aos="fade-up"
+          >
+            Ganesh Murti Showcase
+          </h2>
+          <p className="text-center text-[#7a4c36] font-semibold text-xl sm:text-2xl mb-10">
+            Loading Images.....
+          </p>
+        </section>
+      )}
 
       {activeStory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
