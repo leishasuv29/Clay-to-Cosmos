@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addOrder } from "../redux/orderSlice";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
 import { customOrderSchema } from "../utils/yupValidation";
 
 export default function CustomOrder() {
@@ -11,10 +10,7 @@ export default function CustomOrder() {
 
   const [preview, setPreview] = useState(null);
 
-  useEffect(()=>{console.log(user)}, [])
-
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
-
     try {
       const fd = new FormData();
       fd.append("image", values.file);
@@ -49,6 +45,7 @@ export default function CustomOrder() {
           description: "",
           size: "",
           material: "",
+          delivery: ""
         }}
         validationSchema={customOrderSchema}
         onSubmit={handleSubmit}
@@ -56,9 +53,7 @@ export default function CustomOrder() {
         {({ setFieldValue, isSubmitting }) => (
           <Form className="max-w-lg w-full bg-white p-6 rounded-xl shadow">
             {/* File Upload */}
-            <label className="block mb-2 text-sm font-medium font-quicksand">
-              Sketch / Image
-            </label>
+            <label className="block mb-2 font-quicksand">Upload Design :</label>
             <input
               type="file"
               accept="image/*"
@@ -128,6 +123,30 @@ export default function CustomOrder() {
                   className="text-red-500 text-sm"
                 />
               </div>
+            </div>
+
+            {/* Delivery By */}
+            <div className="flex-1 gap-3 mt-3">
+              <label className="font-quicksand">Delivery By</label>
+              <Field name="delivery">
+                {({ field }) => (
+                  <input
+                    {...field}
+                    type="date"
+                    min={
+                      new Date(Date.now() + 60 * 24 * 60 * 60 * 1000) // 60 days from today
+                        .toISOString()
+                        .split("T")[0]
+                    }
+                    className="w-full p-2 border rounded mt-1 font-quicksand cursor-pointer placeholder:text-red-200"
+                  />
+                )}
+              </Field>
+              <ErrorMessage
+                name="delivery"
+                component="p"
+                className="text-red-500 text-sm"
+              />
             </div>
 
             <div className="mt-5 flex justify-between items-center">

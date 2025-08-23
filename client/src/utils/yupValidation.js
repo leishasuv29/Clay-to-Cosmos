@@ -20,17 +20,23 @@ const registerSchema = Yup.object({
 });
 
 const customOrderSchema = Yup.object({
-    description: Yup.string().required("Description is required."),
-    size: Yup.string().required("Size is required (e.g. 12 inch)."),
-    material: Yup.string().required("Material is required."),
-    file: Yup.mixed()
-      .required("Please attach an image or sketch.")
-      .test("fileSize", "Max file size 5MB", (f) =>
-        f ? f.size <= 5 * 1024 * 1024 : false
-      )
-      .test("fileType", "Only image files allowed", (f) =>
-        f ? f.type.startsWith("image/") : false
-      ),
-  });
+  description: Yup.string().required("Description is required."),
+  size: Yup.string().required("Size is required (e.g. 12 inch)."),
+  material: Yup.string().required("Material is required."),
+  file: Yup.mixed()
+    .required("Please attach an image or sketch.")
+    .test("fileSize", "Max file size 5MB", (f) =>
+      f ? f.size <= 5 * 1024 * 1024 : false
+    )
+    .test("fileType", "Only image files allowed", (f) =>
+      f ? f.type.startsWith("image/") : false
+    ),
+  delivery: Yup.date()
+    .min(
+      new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
+      "Delivery must be at least 60 days from today"
+    )
+    .required("Delivery date is required"),
+});
 
 export { loginSchema, registerSchema, customOrderSchema };
