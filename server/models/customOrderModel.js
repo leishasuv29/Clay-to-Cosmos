@@ -15,9 +15,8 @@ const createCustomOrder = async ({
   order_status,
 }) => {
   const result = await pool.query(
-    `INSERT INTO custom_orders 
-      (user_id, description, image_url, size, material, delivery_by, advance_amount, advance_paid, payment_id, payment_status, order_status)
-     VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11)
+    `INSERT INTO custom_orders (user_id, description, image_url, size, material, delivery_by, advance_amount, advance_paid, payment_id, payment_status, order_status)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, 'pending')
      RETURNING *`,
     [
       user_id,
@@ -30,7 +29,6 @@ const createCustomOrder = async ({
       advance_paid,
       payment_id,
       payment_status,
-      order_status,
     ]
   );
   return result.rows[0];
