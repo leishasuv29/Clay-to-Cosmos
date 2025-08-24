@@ -2,8 +2,8 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../models/userModel.js";
 
-const generateToken = (user_id) => {
-  return jwt.sign({ user_id }, process.env.JWT_SECRET || "secretkey", {
+const generateToken = (user_id, role) => {
+  return jwt.sign({ user_id, role }, process.env.JWT_SECRET || "secretkey", {
     expiresIn: "30d",
   });
 };
@@ -19,7 +19,7 @@ export const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.createUser(name, email, hashedPassword, contact, role);
-    const token = generateToken(user.user_id);
+    const token = generateToken(user.user_id, user.role);
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -39,7 +39,7 @@ export const loginUser = async (req, res) => {
   try {
     const user = await User.findByEmail(email);
     if (user && (await bcrypt.compare(password, user.password))) {
-      const token = generateToken(user.user_id);
+      const token = generateToken(user.user_id, user.role);
       console.log(token);
       res.cookie("token", token, {
         httpOnly: true,

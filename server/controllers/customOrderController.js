@@ -4,18 +4,16 @@ import CustomOrder from "../models/customOrderModel.js";
 export const createCustomOrder = async (req, res) => {
   try {
     const order = await CustomOrder.createCustomOrder({
-      user_id: req.user.user_id, // customer from JWT
-      artisan_id: req.body.artisan_id,
+      user_id: req.user.user_id, 
       description: req.body.description,
       image_url: req.body.image_url,
       size: req.body.size,
       material: req.body.material,
-      price: req.body.price,
       delivery_by: req.body.delivery_by,
       advance_amount: req.body.advance_amount,
       advance_paid: req.body.advance_paid || false,
       payment_id: req.body.payment_id || null,
-      payment_status: req.body.payment_status || "pending",
+      payment_status: req.body.payment_status || "unpaid",
       order_status: req.body.order_status || "pending",
     });
     res.status(201).json(order);
